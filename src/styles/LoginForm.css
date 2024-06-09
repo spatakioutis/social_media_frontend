@@ -1,0 +1,22 @@
+.login--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.submit--login {
+    border-style: none;
+    width: 100px;
+    height: 23px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(96, 96, 255);
+    transition: background-color 0.5s;
+    margin-top: 10px;
+}
+
+.submit--login:hover {
+    background-color: rgb(152, 152, 255);
+}

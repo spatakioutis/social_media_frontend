@@ -1,0 +1,34 @@
+.comment--form {
+    padding: 10px 0 10px 0;
+    background-color: rgb(12, 11, 11);
+    color: white;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    width: 100%;
+    height: 100%;
+}
+
+.comment--form textarea {
+    background-color: rgb(12, 11, 11);
+    border-style: none;
+    text-indent: 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    resize: none;
+}
+
+.submit--comment {
+    background-color:  rgb(12, 11, 11);
+    border-style: none;
+    padding: 3px 10px 0 0;
+    cursor: pointer;
+}
+
+.dialogStyles {
+    box-shadow: none;
+    border-radius: 0px;
+}

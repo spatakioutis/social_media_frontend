@@ -1,0 +1,37 @@
+.login--page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.page--logo {
+    max-width: 300px;
+    max-height: auto;
+}
+
+a,
+h4 {
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a {
+    font-size: 13px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+.register--link {
+    color: rgb(0, 198, 0);
+}
+
+.login--form {
+    background-color: #242424;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.3);
+}

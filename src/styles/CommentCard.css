@@ -1,0 +1,50 @@
+.comment--card {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background-color: rgb(12, 11, 11);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    max-width: 40vw;
+}
+
+.comment--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 100px;
+    width: 90%;
+    gap: 20px;
+    padding-left: 20px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.comment--profil--picture {
+    max-height: 30px;
+    max-width: 100%;
+    border-radius: 100%;
+}
+
+.comment--text {
+    padding: 0 0 0 25px;
+    margin-top: 0;
+    text-align: left;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.comment--likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.comment--likeButton {
+    cursor: pointer;
+}
