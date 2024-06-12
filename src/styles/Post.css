@@ -1,4 +1,5 @@
 .postCard {
+    width: 100%;
     max-width: 400px;
     max-height: calc(4*400px/3);
     padding: 5px 0px 0px 0px;

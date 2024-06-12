@@ -1,4 +1,6 @@
 import {useForm} from 'react-hook-form'
+import React, { useContext } from 'react';
+import { TokenContext } from '../../TokenContext';
 import Input from './Input.jsx'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
@@ -12,6 +14,9 @@ const validationSchema = yup.object({
 }).required()
 
 function LoginForm() {
+
+    const { token, updateToken} = useContext(TokenContext)
+
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues:{
             username: '',
@@ -27,7 +32,12 @@ function LoginForm() {
                 password: data.password
             })
             
-            console.log(response)
+            if (response.status === 200) {
+                updateToken(response.data.token)
+            }
+            else {
+                console.log(response.message)
+            }
         }
         catch (error) {
             console.log(error);

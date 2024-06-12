@@ -40,6 +40,7 @@ function RegisterForm() {
     })
 
     const onSubmit = async data => { 
+        console.log(data.birthDate)
         try {
             const response = await axios.post('http://localhost:5000/register', {
                 username:  data.username,

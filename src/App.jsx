@@ -2,23 +2,20 @@ import './App.css'
 import LoggedOut from './pages/LoggedOut'
 import Post from './components/post/Post'
 import Header from './components/header/Header'
+import HomePage from './pages/HomePage.jsx'
 import {data} from './assets/data.js'
+import {useContext} from 'react'
+import { TokenContext } from './TokenContext.jsx'
 
 function App() {
 	const user = data[0]
 
+	const {token, removeToken} = useContext(TokenContext)
+	
 	return (
-		<div>
-			{/* <Post 
-			        username= {user.username}
-					userProfPic= {user.userProfPic}
-					text= {user.text}
-					image= {user.image}
-					likeCount= {user.likeCount}
-					commentCount= {user.commentCount}/> */}
-			<LoggedOut />
-			{/* <Header /> */}
-		</div>
+		<>
+		{token === '' ? <LoggedOut /> : <HomePage />}
+		</>
 	)
 }
 
