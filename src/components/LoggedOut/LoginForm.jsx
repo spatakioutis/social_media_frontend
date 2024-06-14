@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form'
 import React, { useContext } from 'react';
-import { TokenContext } from '../../TokenContext';
+import { TokenContext } from '../../contexts/TokenContext.jsx';
 import Input from './Input.jsx'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
@@ -15,7 +15,7 @@ const validationSchema = yup.object({
 
 function LoginForm() {
 
-    const { token, updateToken} = useContext(TokenContext)
+    const {updateToken} = useContext(TokenContext)
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues:{

@@ -9,7 +9,7 @@
 /* Adjust styles for smaller screens */
 @media screen and (max-width: 768px) {
     .register--form {
-      grid-template-columns: 1fr; /* Change to a single column layout for small screens */
+      grid-template-columns: 1fr; 
       gap: 20px;
     }
   }
@@ -28,4 +28,37 @@
 
 .submit--register:hover {
     background-color: rgb(23, 193, 23);
+}
+
+.info--modal--bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.info--modal {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(23, 21, 21);
+    padding: 10px 10px 25px 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    min-width: 450px;
+    max-height: 80vh;
+}
+
+.info--modal h3 {
+	color: rgb(0, 186, 6)
+}
+
+.login--modal--link {
+	background-color: rgb(100, 100, 255);
+	color: white;
+	border-radius: 15%;
+	padding: 5px 10px;
 }

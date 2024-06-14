@@ -1,7 +1,7 @@
-import '../../styles/Header.css'
+import '../../styles/PageHeader.css'
 import { FaHome } from "react-icons/fa";
 
-function Header() {
+function PageHeader() {
     return (
         <div className="page--header">
             <img src="./images/header-logo.png" alt="logo" className="header--logo" />
@@ -13,4 +13,4 @@ function Header() {
     )
 }
 
-export default Header
+export default PageHeader

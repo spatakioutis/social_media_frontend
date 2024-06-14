@@ -1,9 +1,11 @@
 import {useForm} from 'react-hook-form'
+import {useState} from 'react'
 import Input from './Input.jsx'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import axios from 'axios'
 import '../../styles/RegisterForm.css'
+import InfoModal from './InfoModal.jsx'
 
 const validationSchema = yup.object({
     username:    yup.string().required('This field is required')
@@ -26,6 +28,8 @@ const validationSchema = yup.object({
 }).required()
 
 function RegisterForm() {
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues:{
             username: '',
@@ -51,15 +55,22 @@ function RegisterForm() {
                 birthDate: data.birthDate
             })
             
-            console.log(response)
+            setModalIsOpen(true)
         }
         catch (error) {
             console.log(error)
+            alert('There was an issue with your registration. Please try again...')
         }
     }
     
     return ( 
-        <form className='register--form' onSubmit={handleSubmit(onSubmit)}>
+        modalIsOpen ? (
+            <InfoModal 
+                    textInfo='Registration Successful!'
+                    link='Log in'
+            />
+        ):(
+            <form className='register--form' onSubmit={handleSubmit(onSubmit)}>
             <Input
                 name="firstName" 
                 inputContext="register"
@@ -117,7 +128,7 @@ function RegisterForm() {
                 error={errors.passConfirm}
             />
             <button className="submit--register" type="submit">Register</button>
-        </form>
+        </form> )
     )
 }
 

@@ -1,5 +1,5 @@
-import Login from '../components/logged-out-forms/Login.jsx'
-import Register from '../components/logged-out-forms/Register.jsx'
+import Login from '../components/LoggedOut/Login.jsx'
+import Register from '../components/LoggedOut/Register.jsx'
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
 
 function LoggedOut() {

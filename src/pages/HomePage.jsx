@@ -1,8 +1,8 @@
 import React from "react"
 import axios from 'axios'
 import {useState, useEffect, useContext} from 'react'
-import { TokenContext } from '../TokenContext'
-import Header from '../components/header/Header.jsx'
+import { TokenContext } from '../contexts/TokenContext.jsx'
+import PageHeader from '../components/header/PageHeader.jsx'
 import Post from '../components/post/Post.jsx'
 import '../styles/HomePage.css'
 
@@ -57,7 +57,7 @@ const HomePage = () => {
     })
 
     return <>
-        <Header/>
+        <PageHeader/>
         <div className="home--page--body">
             {postElements}
             {loading && <p>Loading...</p>}
