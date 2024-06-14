@@ -1,13 +1,14 @@
 import React from "react"
 import axios from 'axios'
 import {useState, useEffect, useContext} from 'react'
-import { TokenContext } from '../contexts/TokenContext.jsx'
+import { TokenContext } from "../contexts/TokenContext.jsx"
+import {logOut} from "../utils/logout.jsx"
 import PageHeader from '../components/header/PageHeader.jsx'
 import Post from '../components/post/Post.jsx'
 import '../styles/HomePage.css'
 
 const HomePage = () => {
-
+    
     const {token} = useContext(TokenContext)
     const [posts, setPosts] = useState([])
     const [page, setPage] = useState(1)
@@ -26,12 +27,13 @@ const HomePage = () => {
                 setPosts(prevPosts => [...prevPosts, ...response.data.posts])
             }
             catch (error) {
+                logOut()
                 console.error('Error fetching posts:', error)
             }
             setLoading(false)
         }
         fetchPosts()
-    }, [page, token])
+    }, [page])
 
     useEffect(() => {
         const handleScroll = () => {

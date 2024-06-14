@@ -4,6 +4,8 @@ import { useState, useEffect, useContext } from 'react'
 import { currUserContext } from '../../contexts/CurrUserContext'
 import { TokenContext } from '../../contexts/TokenContext.jsx'
 import axios from 'axios'
+import {logOut} from '../../utils/logout.jsx'
+
 
 function PageHeader() {
     const {token} = useContext(TokenContext)
@@ -21,6 +23,7 @@ function PageHeader() {
                 setProfilePic(response.data.image)
             }
             catch (error) {
+                logOut()
                 console.error('Error fetching profilePic:', error)
             }
         }
