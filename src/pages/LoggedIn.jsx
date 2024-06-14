@@ -8,7 +8,7 @@ const LoggedIn = () => {
             <div className="LoggedIn--page">
                 <Routes>          
                     <Route
-                        path="/"
+                        path="/login"
                         element={<Navigate to="/home" replace />}
                     />
                     <Route 
