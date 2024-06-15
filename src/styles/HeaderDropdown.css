@@ -1,14 +1,12 @@
-/* HeaderDropdown.css */
-.dropdown-menu {
+
+.dropdown--menu {
     position: absolute;
-    right: 0;
-    top: auto;
-    bottom: 100%;
-    background-color: white;
+	top: 80px;
+	right: 5px;
+    background-color: #303030;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     z-index: 1000;
-    width: 320px;
     max-width: 100%;
     margin-bottom: 8px; /* Adjust the gap between header and dropdown */
 }

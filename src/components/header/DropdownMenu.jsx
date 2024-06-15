@@ -7,30 +7,50 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
+
 import '../../styles/HeaderDropdown.css'
 
 const DropdownMenu = (props) => {
     return (
-        <div className='dropdown-menu'>
-            <Paper sx={{ width: 320, maxWidth: '100%' }}>
+        <div className='dropdown--menu'>
+            <Paper sx={{ 
+                width: 150, 
+                maxWidth: '100%', 
+                backgroundColor: '#303030',
+                color: 'white' }}>
                 <MenuList>
                     <MenuItem>
                         <ListItemIcon>
-                            <AccountCircleIcon  fontSize="small"/>
+                            <AccountCircleIcon  
+                                        fontSize="small" 
+                                        sx={{color: 'white'}}
+                            />
                         </ListItemIcon>
-                        <ListItemText>Profile</ListItemText>
+                        <ListItemText>
+                            Profile
+                        </ListItemText>
                     </MenuItem>
                     <MenuItem>
                         <ListItemIcon>
-                            <SettingsIcon fontSize="small" />
+                            <SettingsIcon 
+                                    fontSize="small" 
+                                    sx={{color: 'white'}}
+                            />
                         </ListItemIcon>
-                        <ListItemText>Settings</ListItemText>
+                        <ListItemText>
+                            Settings
+                        </ListItemText>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick={props.logOut}>
                         <ListItemIcon>
-                            <LogoutIcon />
+                            <LogoutIcon 
+                                    fontSize="small" 
+                                    sx={{color: 'white'}}
+                            />
                         </ListItemIcon>
-                        <ListItemText>Log Out</ListItemText>
+                        <ListItemText>
+                            Log Out
+                        </ListItemText>
                     </MenuItem>
                 </MenuList>
             </Paper>

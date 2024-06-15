@@ -33,7 +33,7 @@ const PageHeader = () => {
                     />
                 </div>
             </div>
-            {dropdownActive && <DropdownMenu/>}
+            {dropdownActive && <DropdownMenu logOut={auth.logOut}/>}
         </>
     )
 }
