@@ -1,19 +1,47 @@
+import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom"
+
+import AuthProvider from './hooks/AuthProvider.jsx'
+import PrivateRoute from './PrivateRoute.jsx'
+import HomePage from './pages/HomePage.jsx'
+import LoginPage from "./pages/LoginPage.jsx"
+import RegisterPage from "./pages/RegisterPage.jsx"
 import './App.css'
-import LoggedOut from './pages/LoggedOut'
-import LoggedIn from './pages/LoggedIn.jsx'
-import {useContext} from 'react'
-import { TokenContext } from './contexts/TokenContext.jsx'
+import UserProfilePage from "./pages/UserProfilePage.jsx"
 
-function App() {
-
-	const {token} = useContext(TokenContext)
-
+const App = () => {
 	return (
 		<>
-		{token === '' 
-		? <LoggedOut /> 
-		: <LoggedIn />
-		}
+			<Router>
+				<AuthProvider>
+					<Routes>
+						<Route 
+							path='/'
+							element={<Navigate to="/login" replace/>}
+						/>
+            			<Route 
+							path="/login" 
+							element={<LoginPage/>} 
+						/>
+						<Route
+							path='/register'
+							element={<RegisterPage/>}
+						/>
+            			<Route 
+							element={<PrivateRoute />}
+						>
+              				<Route 
+								path="/home" 
+								element={<HomePage />} 
+							/>
+							<Route 
+								path="/user" 
+								element={<UserProfilePage />} 
+							/>
+            			</Route>
+           			 {/* Other routes */}
+         			 </Routes>
+				</AuthProvider>
+			</Router>
 		</>
 	)
 }

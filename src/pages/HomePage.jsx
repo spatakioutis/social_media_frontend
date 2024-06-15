@@ -1,15 +1,13 @@
 import React from "react"
-import axios from 'axios'
-import {useState, useEffect, useContext} from 'react'
-import { TokenContext } from "../contexts/TokenContext.jsx"
-import {logOut} from "../utils/logout.jsx"
+import {useAxios} from '../hooks/AxiosInterceptor'
+import {useState, useEffect} from 'react'
+
 import PageHeader from '../components/header/PageHeader.jsx'
 import Post from '../components/post/Post.jsx'
 import '../styles/HomePage.css'
 
 const HomePage = () => {
-    
-    const {token} = useContext(TokenContext)
+    const axiosInstance = useAxios()
     const [posts, setPosts] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
@@ -18,16 +16,10 @@ const HomePage = () => {
         const fetchPosts = async () => {
             setLoading(true)
             try {
-                const response = await axios.get(`http://localhost:5000/posts?page=${page}&limit=10`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                console.log(response)
+                const response = await axiosInstance.get(`http://localhost:5000/posts?page=${page}&limit=10`)
                 setPosts(prevPosts => [...prevPosts, ...response.data.posts])
             }
             catch (error) {
-                logOut()
                 console.error('Error fetching posts:', error)
             }
             setLoading(false)
@@ -59,11 +51,11 @@ const HomePage = () => {
     })
 
     return <>
-        <PageHeader/>
-        <div className="home--page--body">
-            {postElements}
-            {loading && <p>Loading...</p>}
-        </div>
+            <PageHeader/>
+            <div className="home--page--body">
+                {postElements}
+                {loading && <p>Loading...</p>}
+            </div>
     </>
 }
 

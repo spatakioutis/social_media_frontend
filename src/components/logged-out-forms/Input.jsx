@@ -7,8 +7,9 @@ function Input({inputContext, label, name, type, register, error}) {
             <label 
                 className="input--label" 
                 htmlFor={name+  "--" + inputContext}
-            >{label}</label>
-
+            >
+                {label}
+            </label>
             <input
                 id={name + "--" + inputContext}
                 name={name}
@@ -18,7 +19,11 @@ function Input({inputContext, label, name, type, register, error}) {
                 placeholder={type === 'date' ? 'dd/mm/yyyy' : ''}
             />
             { error && (
-                <span className={inputContext + "--error"}>{`*${error.message}`}</span>
+                <span 
+                    className={inputContext + "--error"}
+                >
+                    {`*${error.message}`}
+                </span>
             )}
         </div>
     )

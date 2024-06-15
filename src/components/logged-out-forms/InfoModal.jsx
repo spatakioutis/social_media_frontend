@@ -5,13 +5,16 @@ const InfoModal = ({textInfo, link}) => {
     return (
     <div className="info--modal--bg">
         <div className="info--modal">
-            <h3>{textInfo}</h3>
+            <h3>
+                {textInfo}
+            </h3>
             {link && 
-            (<Link className="login--modal--link" 
+            <Link 
+                className="login--modal--link" 
                 to="/login"
             > 
             {link}
-            </Link>)
+            </Link>
             }
         </div>
         

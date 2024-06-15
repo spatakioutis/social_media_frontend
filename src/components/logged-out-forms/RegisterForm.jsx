@@ -44,7 +44,6 @@ function RegisterForm() {
     })
 
     const onSubmit = async data => { 
-        console.log(data.birthDate)
         try {
             const response = await axios.post('http://localhost:5000/register', {
                 username:  data.username,
@@ -55,7 +54,12 @@ function RegisterForm() {
                 birthDate: data.birthDate
             })
             
-            setModalIsOpen(true)
+            if (response.status === 201) {
+                setModalIsOpen(true)
+            }
+            else {
+                throw new Error(response.message)
+            }
         }
         catch (error) {
             console.log(error)
@@ -70,65 +74,73 @@ function RegisterForm() {
                     link='Log in'
             />
         ):(
-            <form className='register--form' onSubmit={handleSubmit(onSubmit)}>
-            <Input
-                name="firstName" 
-                inputContext="register"
-                label="First Name"
-                register={register}
-                type="text"
-                error={errors.firstName}
-            />
-            <Input
-                name="lastName" 
-                inputContext="register"
-                label="Last Name"
-                register={register}
-                type="text"
-                error={errors.lastName}
-            />
-            <Input
-                name="email" 
-                inputContext="register"
-                label="Email"
-                register={register}
-                type="email"
-                error={errors.email}
-            />
-            <Input
-                name="birthDate" 
-                inputContext="register"
-                label="Birth Date"
-                register={register}
-                type="date"
-                error={errors.birthDate}
-            />
-            <Input
-                name="username" 
-                inputContext="register"
-                label="Username"
-                register={register}
-                type="text"
-                error={errors.username}
-            />
-            <Input
-                name="password" 
-                inputContext="register"
-                label="Password"
-                register={register}
-                type="password"
-                error={errors.password}
-            />
-            <Input
-                name="passConfirm" 
-                inputContext="register"
-                label="Confirm Password"
-                register={register}
-                type="password"
-                error={errors.passConfirm}
-            />
-            <button className="submit--register" type="submit">Register</button>
-        </form> )
+            <form 
+                className='register--form' 
+                onSubmit={handleSubmit(onSubmit)}
+            >
+                <Input
+                    name="firstName" 
+                    inputContext="register"
+                    label="First Name"
+                    register={register}
+                    type="text"
+                    error={errors.firstName}
+                />
+                <Input
+                    name="lastName" 
+                    inputContext="register"
+                    label="Last Name"
+                    register={register}
+                    type="text"
+                    error={errors.lastName}
+                />
+                <Input
+                    name="email" 
+                    inputContext="register"
+                    label="Email"
+                    register={register}
+                    type="email"
+                    error={errors.email}
+                />
+                <Input
+                    name="birthDate" 
+                    inputContext="register"
+                    label="Birth Date"
+                    register={register}
+                    type="date"
+                    error={errors.birthDate}
+                />
+                <Input
+                    name="username" 
+                    inputContext="register"
+                    label="Username"
+                    register={register}
+                    type="text"
+                    error={errors.username}
+                />
+                <Input
+                    name="password" 
+                    inputContext="register"
+                    label="Password"
+                    register={register}
+                    type="password"
+                    error={errors.password}
+                />
+                <Input
+                    name="passConfirm" 
+                    inputContext="register"
+                    label="Confirm Password"
+                    register={register}
+                    type="password"
+                    error={errors.passConfirm}
+                />
+                <button 
+                    className="submit--register" 
+                    type="submit"
+                >
+                    Register
+                </button>
+            </form> )
     )
 }
 

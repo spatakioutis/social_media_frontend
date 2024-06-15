@@ -1,43 +1,40 @@
-import '../../styles/PageHeader.css'
 import { FaHome } from "react-icons/fa"
-import { useState, useEffect, useContext } from 'react'
-import { currUserContext } from '../../contexts/CurrUserContext'
-import { TokenContext } from '../../contexts/TokenContext.jsx'
-import axios from 'axios'
-import {logOut} from '../../utils/logout.jsx'
+import { useState } from "react"
 
+import DropdownMenu from "./DropdownMenu"
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/AuthProvider"
+import '../../styles/PageHeader.css'
 
-function PageHeader() {
-    const {token} = useContext(TokenContext)
-    const {currUser} = useContext(currUserContext)
-    const [profilePic, setProfilePic] = useState('')
+const PageHeader = () => {
 
-    useEffect(() => {
-        const fetchProfilePic = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/profilePic?username=${currUser}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                setProfilePic(response.data.image)
-            }
-            catch (error) {
-                logOut()
-                console.error('Error fetching profilePic:', error)
-            }
-        }
-        fetchProfilePic()
-    }, [])
+    const auth = useAuth()
+    const navigate = useNavigate()
+    const [dropdownActive, setDropdownActive] = useState(false)
 
     return (
-        <div className="page--header">
-            <img src="./images/header-logo.png" alt="logo" className="header--logo" />
-            <div className="header--options">
-                <FaHome className="header--home--button"/>
-                <img src={profilePic} alt="avatar" className="logged--user--button" />
+        <>  
+            <div className="page--header">
+                <img 
+                    src="https://storage.googleapis.com/spatakioutis_app_img/header-logo.png" 
+                    alt="logo" 
+                    className="header--logo"
+                />
+                <div className="header--options">
+                    <FaHome 
+                        className="header--home--button"
+                        onClick={() => {navigate('/home')}}
+                    />
+                    <img 
+                        src={auth.user && auth.user.profilePic} 
+                        alt="avatar" 
+                        className="logged--user--button"
+                        onClick={() => {setDropdownActive(prevState => !prevState)}}
+                    />
+                </div>
             </div>
-        </div>
+            {dropdownActive && <DropdownMenu/>}
+        </>
     )
 }
 
