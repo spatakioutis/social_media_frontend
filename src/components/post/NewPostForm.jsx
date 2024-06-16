@@ -9,7 +9,6 @@ import '../../styles/post/NewPostForm.css'
 const validationSchema = yup.object({
     text: yup.string(),
     image: yup.mixed().required('Image is required').test('fileFormat', 'Unsupported file format', (value) => {
-        console.log(value)
         return value && value.length > 0 && ['image/jpeg', 'image/png'].includes(value[0].type)
     })
 })
