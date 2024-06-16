@@ -2,9 +2,10 @@ import { FaHome } from "react-icons/fa"
 import { useState } from "react"
 
 import DropdownMenu from "./DropdownMenu"
+import SearchBar from "./SearchBar.jsx"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/AuthProvider"
-import '../../styles/PageHeader.css'
+import '../../styles/header/PageHeader.css'
 
 const PageHeader = () => {
 
@@ -20,6 +21,7 @@ const PageHeader = () => {
                     alt="logo" 
                     className="header--logo"
                 />
+                <SearchBar />
                 <div className="header--options">
                     <FaHome 
                         className="header--home--button"

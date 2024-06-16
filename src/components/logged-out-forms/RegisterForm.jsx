@@ -4,7 +4,7 @@ import Input from './Input.jsx'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import axios from 'axios'
-import '../../styles/RegisterForm.css'
+import '../../styles/logged-out-forms/RegisterForm.css'
 import InfoModal from './InfoModal.jsx'
 
 const validationSchema = yup.object({

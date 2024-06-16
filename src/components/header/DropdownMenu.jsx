@@ -8,7 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-import '../../styles/HeaderDropdown.css'
+import '../../styles/header/HeaderDropdown.css'
 
 const DropdownMenu = (props) => {
     return (

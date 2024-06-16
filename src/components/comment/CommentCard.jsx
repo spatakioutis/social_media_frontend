@@ -1,6 +1,6 @@
 import { IoIosHeartEmpty,IoIosHeart } from "react-icons/io";
 import {useState} from 'react'
-import '../../styles/CommentCard.css'
+import '../../styles/comments/CommentCard.css'
 
 function CommentCard({comment}) {
 

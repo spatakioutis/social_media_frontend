@@ -1,7 +1,7 @@
 import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
-import '../../styles/CommentForm.css'
+import '../../styles/comments/CommentForm.css'
 
 const validationSchema = yup.object({
     newComment: yup.string().required().max(300),

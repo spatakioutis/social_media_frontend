@@ -3,8 +3,8 @@ import { FaRegComment } from "react-icons/fa";
 import {useState} from 'react'
 
 import {comments} from '../../assets/data.js'
-import '../../styles/Post.css'
 import CommentModal from "../comment/CommentModal.jsx";
+import '../../styles/post/Post.css'
 
 const Post = (props) => {
 

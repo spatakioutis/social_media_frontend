@@ -5,9 +5,9 @@ import axios from "axios"
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-
-	const [user, setUser] = useState(null)
-	const [token, setToken] = useState(localStorage.getItem('token' || ''))
+  
+	const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null)
+	const [token, setToken] = useState(localStorage.getItem('token') || '')
 	const navigate = useNavigate()
 
 	const logIn = async (data) => {
@@ -19,7 +19,8 @@ const AuthProvider = ({ children }) => {
 		if (response.data) {
 			setUser(response.data.user)
 			setToken(response.data.token)
-			localStorage.setItem('token', response.token)
+			localStorage.setItem('user', JSON.stringify(response.data.user))
+			localStorage.setItem('token', response.data.token)
 			navigate('/home')
 		}
 	}
@@ -28,9 +29,9 @@ const AuthProvider = ({ children }) => {
 		setUser(null)
 		setToken('')
 		localStorage.removeItem('token')
-		navigate('login')
+		localStorage.removeItem('user')
+		navigate('/login')
 	}
-
 
 	return (
 		<AuthContext.Provider value={{ token, user, logIn, logOut }}>

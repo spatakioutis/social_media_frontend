@@ -5,8 +5,8 @@ import PrivateRoute from './PrivateRoute.jsx'
 import HomePage from './pages/HomePage.jsx'
 import LoginPage from "./pages/LoginPage.jsx"
 import RegisterPage from "./pages/RegisterPage.jsx"
-import './App.css'
 import UserProfilePage from "./pages/UserProfilePage.jsx"
+import './styles/App.css'
 
 const App = () => {
 	return (
@@ -38,7 +38,6 @@ const App = () => {
 								element={<UserProfilePage />} 
 							/>
             			</Route>
-           			 {/* Other routes */}
          			 </Routes>
 				</AuthProvider>
 			</Router>

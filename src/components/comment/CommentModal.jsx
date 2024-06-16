@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import CommentForm from "./CommentForm"
 import CommentCard from "./CommentCard"
 import { IoMdClose } from "react-icons/io";
-import "../../styles/CommentModal.css"
+import "../../styles/comments/CommentModal.css"
 
 function CommentModal(props) {
     

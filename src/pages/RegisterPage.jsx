@@ -1,6 +1,6 @@
 import RegisterForm from "../components/logged-out-forms/RegisterForm"
 import {Link} from "react-router-dom"
-import '../styles/Register.css'
+import '../styles/pages/RegisterPage.css'
 
 const RegisterPage = () => {
     return (

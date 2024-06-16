@@ -1,8 +1,8 @@
 import React from 'react'
 import LoginForm from "../components/logged-out-forms/LoginForm"
 import {Link} from "react-router-dom"
-import '../styles/Login.css'
-import '../styles/RegisterForm.css'
+import '../styles/pages/LoginPage.css'
+import '../styles/logged-out-forms/RegisterForm.css'
 
 const LoginPage = () => {
     return ( 

@@ -5,7 +5,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 
 import { useAuth } from '../../hooks/AuthProvider.jsx'
 import Input from './Input.jsx'
-import '../../styles/LoginForm.css'
+import '../../styles/logged-out-forms/LoginForm.css'
 
 const validationSchema = yup.object({
     username: yup.string().required('This field is required'),

@@ -1,16 +1,19 @@
 import React from "react"
-import {useAxios} from '../hooks/AxiosInterceptor'
 import {useState, useEffect} from 'react'
 
+import {useAxios} from '../hooks/AxiosInterceptor'
 import PageHeader from '../components/header/PageHeader.jsx'
 import Post from '../components/post/Post.jsx'
-import '../styles/HomePage.css'
+import CreatePostCard from "../components/post/CreatePostCard.jsx"
+import NewPostForm from "../components/post/NewPostForm.jsx"
+import '../styles/pages/HomePage.css'
 
 const HomePage = () => {
     const axiosInstance = useAxios()
     const [posts, setPosts] = useState([])
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
+    const [newPostModalActive, setNewPostModalActive] = useState(false)
     
     useEffect(() => {
         const fetchPosts = async () => {
@@ -50,13 +53,19 @@ const HomePage = () => {
             />
     })
 
-    return <>
-            <PageHeader/>
-            <div className="home--page--body">
-                {postElements}
-                {loading && <p>Loading...</p>}
-            </div>
-    </>
+    return (
+        <div className="home--page">
+                <PageHeader/>
+                <CreatePostCard openModal={ () => {setNewPostModalActive(true)}}/>
+                {newPostModalActive && 
+                    <NewPostForm closeModal={ () => {setNewPostModalActive(false)}} />
+                }
+                <div className="home--page--body">
+                    {postElements}
+                    {loading && <p>Loading...</p>}
+                </div>
+        </div>
+    )
 }
 
 export default HomePage

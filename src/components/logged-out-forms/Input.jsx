@@ -1,4 +1,4 @@
-import '../../styles/Input.css'
+import '../../styles/logged-out-forms/Input.css'
 
 function Input({inputContext, label, name, type, register, error}) {
 
