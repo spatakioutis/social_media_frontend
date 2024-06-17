@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-import PageHeader from '../components/pageHeader/PageHeader.jsx'
+import Post from '../components/post/Post.jsx'
+import PageHeader from '../components/page-header/PageHeader.jsx'
 import UserProfileHeader from '../components/userProfile/UserProfileHeader.jsx'
 import { useAxios } from '../hooks/AxiosInterceptor.jsx'
 import '../styles/pages/UserProfilePage.css'
-
 
 const UserProfilePage = () => {
 
@@ -18,6 +18,8 @@ const UserProfilePage = () => {
         const fetchProfile = async () => {
             try {
                 const response = await axiosInstance.get(`http://localhost:5000/profile?username=${username}`)
+                
+                response.data.profile.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                 setProfile(response.data.profile)
             }
             catch (error) {
@@ -27,12 +29,25 @@ const UserProfilePage = () => {
         fetchProfile()
     }, [])
 
-
     return (
         <div className="user--profile--page">
             <PageHeader />
-            {profile ? 
+            {profile ? <>
                 <UserProfileHeader userInfo={profile.userInfo}/>
+                <div className="home--page--body">
+                        {profile.posts.map((post) => (
+                            <Post 
+                                key={post.createdAt}
+                                username={profile.userInfo.username}
+                                userProfPic={profile.userInfo.profilePic}
+                                text={''}
+                                image={post.image}
+                                likeCount={0}
+                                commentCount={0}
+                            />
+                        ))}
+                </div>
+            </>
             :
             <h3>Loading...</h3>
             }   

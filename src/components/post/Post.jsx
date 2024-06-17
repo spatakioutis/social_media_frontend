@@ -1,12 +1,14 @@
 import { IoIosHeartEmpty,IoIosHeart } from "react-icons/io";
 import { FaRegComment } from "react-icons/fa";
 import {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 
 import {comments} from '../../assets/data.js'
 import CommentModal from "../comment/CommentModal.jsx";
 import '../../styles/post/Post.css'
 
 const Post = (props) => {
+    const navigate = useNavigate()
 
     const [isLiked, setIsLiked] = useState(false)
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -15,6 +17,10 @@ const Post = (props) => {
         setModalIsOpen((prev) => !prev)
     };
 
+    const goToProfile = () => {
+        navigate('/user', {state: {username: props.username}})
+    }
+
     return (
         <div className="postCard">
             <div className="post--header">
@@ -22,9 +28,11 @@ const Post = (props) => {
                     className="post--profil--picture" 
                     src={props.userProfPic} 
                     alt="user picture"
+                    onClick={goToProfile}                    
                 />
                 <h3 
                     className="post--username"
+                    onClick={goToProfile}                                    
                 >
                     {props.username}
                 </h3>
