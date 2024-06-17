@@ -8,9 +8,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
 
+import { useNavigate } from 'react-router-dom'
 import '../../styles/header/HeaderDropdown.css'
 
 const DropdownMenu = (props) => {
+
+    const navigate = useNavigate()
+
     return (
         <div className='dropdown--menu'>
             <Paper sx={{ 
@@ -19,16 +23,16 @@ const DropdownMenu = (props) => {
                 backgroundColor: '#303030',
                 color: 'white' }}>
                 <MenuList>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <AccountCircleIcon  
-                                        fontSize="small" 
-                                        sx={{color: 'white'}}
-                            />
-                        </ListItemIcon>
-                        <ListItemText>
-                            Profile
-                        </ListItemText>
+                    <MenuItem onClick={() => navigate('/user', {state: {username: props.user}} ) }>
+                            <ListItemIcon>
+                                <AccountCircleIcon  
+                                            fontSize="small" 
+                                            sx={{color: 'white'}}
+                                />
+                            </ListItemIcon>
+                            <ListItemText>
+                                Profile
+                            </ListItemText>
                     </MenuItem>
                     <MenuItem>
                         <ListItemIcon>

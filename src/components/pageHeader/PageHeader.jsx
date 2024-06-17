@@ -1,10 +1,10 @@
 import { FaHome } from "react-icons/fa"
 import { useState } from "react"
 
-import DropdownMenu from "./DropdownMenu"
+import DropdownMenu from "./DropdownMenu.jsx"
 import SearchBar from "./SearchBar.jsx"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../hooks/AuthProvider"
+import { useAuth } from "../../hooks/AuthProvider.jsx"
 import '../../styles/header/PageHeader.css'
 
 const PageHeader = () => {
@@ -35,7 +35,10 @@ const PageHeader = () => {
                     />
                 </div>
             </div>
-            {dropdownActive && <DropdownMenu logOut={auth.logOut}/>}
+            {dropdownActive && <DropdownMenu 
+                                        logOut={auth.logOut}
+                                        user={auth.user.username}
+                                />}
         </>
     )
 }

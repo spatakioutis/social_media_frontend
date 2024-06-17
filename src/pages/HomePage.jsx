@@ -2,7 +2,7 @@ import React from "react"
 import {useState, useEffect} from 'react'
 
 import {useAxios} from '../hooks/AxiosInterceptor'
-import PageHeader from '../components/header/PageHeader.jsx'
+import PageHeader from '../components/pageHeader/PageHeader.jsx'
 import Post from '../components/post/Post.jsx'
 import CreatePostCard from "../components/post/CreatePostCard.jsx"
 import NewPostForm from "../components/post/NewPostForm.jsx"
