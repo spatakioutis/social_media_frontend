@@ -41,15 +41,23 @@ const HomePage = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    const handlePostDelete = (postId) => {
+        setPosts((prevPosts) => 
+            prevPosts.filter(post => post._id !== postId)
+        )
+    }
+
     const postElements = posts.map((post) => {
         return <Post 
-                key={post.createdAt}
-                username= {post.userInfo.username}
-                userProfPic= {post.userInfo.profilePic}
-                text= {''}
-                image= {post.image}
-                likeCount= {post.likes}
-                commentCount= {0}
+                    postId={post._id}
+                    key={post.createdAt}
+                    username= {post.userInfo.username}
+                    userProfPic= {post.userInfo.profilePic}
+                    text= {''}
+                    image= {post.image}
+                    likeCount= {post.likes}
+                    commentCount= {0}
+                    deletePost={handlePostDelete}
             />
     })
 

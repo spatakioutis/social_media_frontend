@@ -29,6 +29,13 @@ const UserProfilePage = () => {
         fetchProfile()
     }, [])
 
+    const handlePostDelete = (postId) => {
+        setProfile((prevProfile) => ({
+            ...prevProfile,
+            posts: prevProfile.posts.filter(post => post._id !== postId)
+        }));
+    };
+
     return (
         <div className="user--profile--page">
             <PageHeader />
@@ -37,6 +44,7 @@ const UserProfilePage = () => {
                 <div className="home--page--body">
                         {profile.posts.map((post) => (
                             <Post 
+                                postId={post._id}
                                 key={post.createdAt}
                                 username={profile.userInfo.username}
                                 userProfPic={profile.userInfo.profilePic}
@@ -44,6 +52,7 @@ const UserProfilePage = () => {
                                 image={post.image}
                                 likeCount={0}
                                 commentCount={0}
+                                deletePost={handlePostDelete}
                             />
                         ))}
                 </div>

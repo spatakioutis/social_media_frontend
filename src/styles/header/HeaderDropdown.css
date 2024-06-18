@@ -1,6 +1,5 @@
-
 .dropdown--menu {
-    position: absolute;
+    position: fixed;
 	top: 80px;
 	right: 5px;
     background-color: #303030;
@@ -8,7 +7,7 @@
     border-radius: 4px;
     z-index: 1000;
     max-width: 100%;
-    margin-bottom: 8px; /* Adjust the gap between header and dropdown */
+    margin-bottom: 8px; 
 }
 
 .dropdown-menu .MuiPaper-root {
