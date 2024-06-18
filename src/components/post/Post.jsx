@@ -137,13 +137,6 @@ const Post = (props) => {
                     </h5>
                 </div>                
             </div>
-            <div className='post--caption'>
-                { props.text && 
-                <p className="post--caption">
-                    {props.text}
-                </p>
-                }
-            </div>
             { modalIsOpen &&
             <CommentModal 
                         comments={comments}
