@@ -48,9 +48,8 @@ const UserProfilePage = () => {
                                 key={post.createdAt}
                                 username={profile.userInfo.username}
                                 userProfPic={profile.userInfo.profilePic}
-                                text={''}
                                 image={post.image}
-                                likeCount={0}
+                                likes={post.likes}
                                 commentCount={0}
                                 deletePost={handlePostDelete}
                             />

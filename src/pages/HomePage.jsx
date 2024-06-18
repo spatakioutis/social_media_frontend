@@ -53,9 +53,8 @@ const HomePage = () => {
                     key={post.createdAt}
                     username= {post.userInfo.username}
                     userProfPic= {post.userInfo.profilePic}
-                    text= {''}
                     image= {post.image}
-                    likeCount= {post.likes}
+                    likes= {post.likes}
                     commentCount= {0}
                     deletePost={handlePostDelete}
             />
