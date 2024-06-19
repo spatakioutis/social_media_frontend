@@ -5,6 +5,7 @@ import ChangeProfilePic from '../components/settings/ChangeProfilePic.jsx'
 import ChangePassword from '../components/settings/ChangePassword.jsx'
 
 import '../styles/pages/SettingsPage.css'
+import ChangeUserInfo from '../components/settings/ChangeUserInfo.jsx'
 
 
 const SettingsPage = () => {
@@ -50,8 +51,9 @@ const SettingsPage = () => {
                     Delete Account
                 </button>
             </div>
-            { profPicModal && <ChangeProfilePic closeModal={()=>setProfPicModal(false)}/> }
-            { changePasswordModal && <ChangePassword closeModal={()=>setChangePasswordModal(false)}/> }
+            { changeInfoModal     && <ChangeUserInfo   closeModal={()=>setChangeInfoModal(false)}     />}
+            { profPicModal        && <ChangeProfilePic closeModal={()=>setProfPicModal(false)}        /> }
+            { changePasswordModal && <ChangePassword   closeModal={()=>setChangePasswordModal(false)} /> }
         </div>
     )
 }

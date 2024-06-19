@@ -1,0 +1,15 @@
+.changeUserInfo--input--fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.changeUserInfo--input--fields input {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-size: 15px;
+    text-indent: 8px;
+    margin: 4px 0 15px 0;
+    background-color: #4e4e4e;
+}
+
