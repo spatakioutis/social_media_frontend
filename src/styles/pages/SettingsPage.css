@@ -19,6 +19,7 @@
     border: none;
     border-radius: 6px;
     width: 25%;
+    min-width: 150spx;
     height: 30px;
     padding: 5px 0;
     background-color: #3e3e3e;
@@ -29,9 +30,6 @@
 .settings--container button:hover {
     background-color: #5b5b5b;
 }
-
-
-
 
 .change--profilePic--modal--bg {
     position: fixed;

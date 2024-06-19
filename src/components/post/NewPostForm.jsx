@@ -35,7 +35,7 @@ const NewPostForm = ({closeModal}) => {
     }
 
     return (
-        <div className="newPost--modal--bg">
+        <div className="modal--bg">
             <form onSubmit={handleSubmit(onSubmit)} className='form--container'>
                 <div>
                     <input

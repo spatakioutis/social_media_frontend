@@ -2,8 +2,10 @@ import { useState } from 'react'
 
 import PageHeader from '../components/page-header/PageHeader.jsx'
 import ChangeProfilePic from '../components/settings/ChangeProfilePic.jsx'
+import ChangePassword from '../components/settings/ChangePassword.jsx'
 
 import '../styles/pages/SettingsPage.css'
+
 
 const SettingsPage = () => {
 
@@ -49,6 +51,7 @@ const SettingsPage = () => {
                 </button>
             </div>
             { profPicModal && <ChangeProfilePic closeModal={()=>setProfPicModal(false)}/> }
+            { changePasswordModal && <ChangePassword closeModal={()=>setChangePasswordModal(false)}/> }
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const InfoModal = ({textInfo, link}) => {
 
     return (
-    <div className="info--modal--bg">
+    <div className="modal--bg">
         <div className="info--modal">
             <h3>
                 {textInfo}

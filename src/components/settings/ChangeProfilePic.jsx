@@ -31,7 +31,7 @@ const ChangeProfilePic = ({closeModal}) => {
     }
 
     return (
-        <div className="change--profilePic--modal--bg">
+        <div className="modal--bg">
             <form onSubmit={handleSubmit(onSubmit)} className='form--container'>
                 <div className='input--fields'>
                     <label>Choose a new profile picture</label>
