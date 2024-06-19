@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage.jsx'
 import LoginPage from "./pages/LoginPage.jsx"
 import RegisterPage from "./pages/RegisterPage.jsx"
 import UserProfilePage from "./pages/UserProfilePage.jsx"
+import SettingsPage from "./pages/SettingsPage.jsx"
 import './styles/App.css'
 
 const App = () => {
@@ -36,6 +37,10 @@ const App = () => {
 							<Route 
 								path="/user" 
 								element={<UserProfilePage />} 
+							/>
+							<Route 
+								path="/settings" 
+								element={<SettingsPage />} 
 							/>
             			</Route>
          			 </Routes>

@@ -15,7 +15,7 @@
     transform: translate(-50%, -50%);
 }
 
-.input--fields  {
+.input--fields {
     display: flex;
     flex-direction: column;
 }

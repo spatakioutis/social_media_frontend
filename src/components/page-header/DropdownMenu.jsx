@@ -34,7 +34,7 @@ const DropdownMenu = (props) => {
                                 Profile
                             </ListItemText>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick={() => navigate('/settings')}>
                         <ListItemIcon>
                             <SettingsIcon 
                                     fontSize="small" 

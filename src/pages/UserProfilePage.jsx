@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import Post from '../components/post/Post.jsx'
 import PageHeader from '../components/page-header/PageHeader.jsx'
-import UserProfileHeader from '../components/userProfile/UserProfileHeader.jsx'
+import UserProfileHeader from '../components/user-profile/UserProfileHeader.jsx'
 import { useAxios } from '../hooks/AxiosInterceptor.jsx'
 import '../styles/pages/UserProfilePage.css'
 
