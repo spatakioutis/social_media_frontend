@@ -3,10 +3,10 @@ import { useState } from 'react'
 import PageHeader from '../components/page-header/PageHeader.jsx'
 import ChangeProfilePic from '../components/settings/ChangeProfilePic.jsx'
 import ChangePassword from '../components/settings/ChangePassword.jsx'
+import ChangeUserInfo from '../components/settings/ChangeUserInfo.jsx'
+import DeleteAccountConfirm from '../components/settings/DeleteAccountConfirm.jsx'
 
 import '../styles/pages/SettingsPage.css'
-import ChangeUserInfo from '../components/settings/ChangeUserInfo.jsx'
-
 
 const SettingsPage = () => {
 
@@ -49,9 +49,10 @@ const SettingsPage = () => {
                     Delete Account
                 </button>
             </div>
-            { changeInfoModal     && <ChangeUserInfo   closeModal={()=>setChangeInfoModal(false)}     />}
-            { profPicModal        && <ChangeProfilePic closeModal={()=>setProfPicModal(false)}        /> }
-            { changePasswordModal && <ChangePassword   closeModal={()=>setChangePasswordModal(false)} /> }
+            { changeInfoModal     && <ChangeUserInfo       closeModal={()=>setChangeInfoModal(false)}     />}
+            { profPicModal        && <ChangeProfilePic     closeModal={()=>setProfPicModal(false)}        /> }
+            { changePasswordModal && <ChangePassword       closeModal={()=>setChangePasswordModal(false)} /> }
+            { deleteConfirmModal  && <DeleteAccountConfirm closeModal={()=>setDeleteConfirmModal(false)} />}
         </div>
     )
 }
