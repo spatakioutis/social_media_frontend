@@ -38,7 +38,7 @@ const ChangeUserInfo = ({closeModal}) => {
     const onSubmit = async (data) => {
         try {
             setErrorMessage('')
-            const response = await axiosInstance.put(`http://localhost:5000/userInfo`, {
+            await axiosInstance.put(`http://localhost:5000/userInfo`, {
                 updates: {
                     username:  data.username,
                     firstName: data.firstName,

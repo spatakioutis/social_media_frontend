@@ -15,8 +15,6 @@ const SettingsPage = () => {
     const [changePasswordModal, setChangePasswordModal] = useState(false)
     const [deleteConfirmModal, setDeleteConfirmModal] = useState(false)
 
-
-
     return (
         <div className='settings--page'>
             <PageHeader />

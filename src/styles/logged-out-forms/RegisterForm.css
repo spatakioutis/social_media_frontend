@@ -50,6 +50,6 @@
 .login--modal--link {
 	background-color: rgb(100, 100, 255);
 	color: white;
-	border-radius: 15%;
+	border-radius: 8px;
 	padding: 5px 10px;
 }

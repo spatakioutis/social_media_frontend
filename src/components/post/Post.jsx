@@ -40,7 +40,6 @@ const Post = (props) => {
     const likePost = async () => {
         try {
             await axiosInstance.post(`http://localhost:5000/posts/likes`, {
-                username: auth.user.username,
                 postID: props.postId
             })
             setIsLiked(true)
@@ -53,7 +52,7 @@ const Post = (props) => {
 
     const deleteLikeFromPost = async () => {
         try {
-            await axiosInstance.delete(`http://localhost:5000/posts/likes/${auth.user.username}?postID=${props.postId}`)
+            await axiosInstance.delete(`http://localhost:5000/posts/likes?postID=${props.postId}`)
             setIsLiked(false)
             setLikeCount(prevCount => prevCount - 1)
         }
@@ -63,7 +62,7 @@ const Post = (props) => {
     }
 
     useEffect(() => {
-        if (props.likes.find(element => element === auth.user.username)) {
+        if (props.likes.some( like => like && like.toString() === auth.user.userID.toString()) ) {
             setIsLiked(true)
         } else {
             setIsLiked(false)
