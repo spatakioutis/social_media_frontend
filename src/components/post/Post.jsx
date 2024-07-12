@@ -29,8 +29,8 @@ const Post = (props) => {
 
     const handlePostDelete = async () => {
         try {
-            await axiosInstance.delete(`http://localhost:5000/posts?postID=${props.postId}`)
-            props.deletePost(props.postId)
+            await axiosInstance.delete(`http://localhost:5000/posts?postID=${props.postID}`)
+            props.deletePost(props.postID)
         }
         catch (error) {
             console.log(error)
@@ -40,7 +40,7 @@ const Post = (props) => {
     const likePost = async () => {
         try {
             await axiosInstance.post(`http://localhost:5000/posts/likes`, {
-                postID: props.postId
+                postID: props.postID
             })
             setIsLiked(true)
             setLikeCount(prevCount => prevCount + 1)
@@ -52,7 +52,7 @@ const Post = (props) => {
 
     const deleteLikeFromPost = async () => {
         try {
-            await axiosInstance.delete(`http://localhost:5000/posts/likes?postID=${props.postId}`)
+            await axiosInstance.delete(`http://localhost:5000/posts/likes?postID=${props.postID}`)
             setIsLiked(false)
             setLikeCount(prevCount => prevCount - 1)
         }
@@ -105,6 +105,10 @@ const Post = (props) => {
                 Error: Failed to load image
             </h4>
             }
+            <div className="post--caption">
+                <p className="caption--username">{props.username}</p>
+                <p className="caption--text">{props.caption}</p>
+            </div>
             <div className="post--options">
                 <div className='post--likes'>
                     {isLiked ? 
@@ -138,9 +142,10 @@ const Post = (props) => {
             </div>
             { modalIsOpen &&
             <CommentModal 
-                        comments={comments}
-                        toggleModal={toggleModal} 
-                        isOpen={modalIsOpen}
+                    comments={comments}
+                    toggleModal={toggleModal} 
+                    isOpen={modalIsOpen}
+                    postID={props.postID}
             />
             }
         </div>

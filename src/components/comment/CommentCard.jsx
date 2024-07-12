@@ -2,15 +2,23 @@ import { IoIosHeartEmpty,IoIosHeart } from "react-icons/io";
 import {useState} from 'react'
 import '../../styles/comments/CommentCard.css'
 
-function CommentCard({comment}) {
+const CommentCard = ({comment}) => {
 
     const [isLiked, setIsLiked] = useState(false)
 
     return (
         <div className="comment--card">            
             <div className="comment--header">
-                <img className="comment--profil--picture" src={comment.userProfPic} alt="user picture"/>
-                <h3 className="comment--username">{comment.username}</h3>
+                <img 
+                    className="comment--profil--picture" 
+                    src={comment.userProfPic} 
+                    alt="user picture"
+                />
+                <h3 
+                    className="comment--username"
+                >
+                    {comment.username}
+                </h3>
                 <div className='comment--likes'>
                     {isLiked ? 
                         <IoIosHeart className="comment--likeButton"

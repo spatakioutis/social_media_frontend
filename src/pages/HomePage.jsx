@@ -49,11 +49,12 @@ const HomePage = () => {
 
     const postElements = posts.map((post) => {
         return <Post 
-                    postId={post._id}
+                    postID={post._id}
                     key={post.createdAt}
                     username= {post.userInfo.username}
                     userProfPic= {post.userInfo.profilePic}
                     image= {post.image}
+                    caption= {post.caption}
                     likes= {post.likes}
                     commentCount= {0}
                     deletePost={handlePostDelete}

@@ -4,7 +4,7 @@ import CommentCard from "./CommentCard"
 import { IoMdClose } from "react-icons/io";
 import "../../styles/comments/CommentModal.css"
 
-function CommentModal(props) {
+const CommentModal = (props) => {
     
     const commentsCards = props.comments.map((comment, index) => {
         return <CommentCard comment={comment} key={index + 1} />
@@ -16,10 +16,13 @@ function CommentModal(props) {
                 <div className="comment--cards">
                     {commentsCards}
                 </div>
-                <CommentForm />
+                <CommentForm 
+                    postID={props.postID}
+                    commentSumbit={props.commentSumbit}
+                />
             </div>
-            <IoMdClose className="closeModal--button"
-                       onClick={props.toggleModal}
+            <IoMdClose 
+                    className="closeModal--button"
             />
         </div>
 
