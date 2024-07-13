@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom"
 
 import {useAxios} from '../../hooks/AxiosInterceptor.jsx'
 import {useAuth} from '../../hooks/AuthProvider.jsx'
-import {comments} from '../../assets/data.js'
 import CommentModal from "../comment/CommentModal.jsx"
 import '../../styles/post/Post.css'
 
@@ -142,7 +141,6 @@ const Post = (props) => {
             </div>
             { modalIsOpen &&
             <CommentModal 
-                    comments={comments}
                     toggleModal={toggleModal} 
                     isOpen={modalIsOpen}
                     postID={props.postID}

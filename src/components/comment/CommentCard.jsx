@@ -11,7 +11,7 @@ const CommentCard = ({comment}) => {
             <div className="comment--header">
                 <img 
                     className="comment--profil--picture" 
-                    src={comment.userProfPic} 
+                    src={comment.profilePic} 
                     alt="user picture"
                 />
                 <h3 

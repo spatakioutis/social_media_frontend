@@ -12,7 +12,7 @@ const CommentForm = (props) => {
 
     const axiosInstance = useAxios()
 
-    const {register, handleSubmit, formState: { errors } } = useForm({
+    const {register, handleSubmit, reset} = useForm({
         resolver: yupResolver(validationSchema),
         defaultValues: {
             newComment: ''
@@ -20,10 +20,17 @@ const CommentForm = (props) => {
     })
 
     const commentSubmit = async (data) => { 
-        await axiosInstance.post('http://localhost:5000/comments', {
-            postID: props.postID,
-            text: data.newComment
-        })
+        try {
+            await axiosInstance.post('http://localhost:5000/comments', {
+                postID: props.postID,
+                text: data.newComment
+            })
+            props.refreshTrigger(prev => !prev)
+            reset()
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     return (

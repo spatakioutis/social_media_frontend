@@ -23,7 +23,7 @@ const HomePage = () => {
                 setPosts(prevPosts => [...prevPosts, ...response.data.posts])
             }
             catch (error) {
-                console.error('Error fetching posts:', error)
+                console.log('Error fetching posts:', error)
             }
             setLoading(false)
         }
