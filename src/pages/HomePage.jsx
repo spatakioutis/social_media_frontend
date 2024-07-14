@@ -56,7 +56,7 @@ const HomePage = () => {
                     image= {post.image}
                     caption= {post.caption}
                     likes= {post.likes}
-                    commentCount= {0}
+                    comments= {post.comments}
                     deletePost={handlePostDelete}
             />
     })

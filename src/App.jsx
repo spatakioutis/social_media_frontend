@@ -1,5 +1,4 @@
 import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom"
-
 import AuthProvider from './hooks/AuthProvider.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import HomePage from './pages/HomePage.jsx'

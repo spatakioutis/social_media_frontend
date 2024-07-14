@@ -16,6 +16,7 @@ const Post = (props) => {
 
     const [isLiked, setIsLiked] = useState(false)
     const [likeCount, setLikeCount] = useState(props.likes.length)
+    const [commentCount, setCommentCount] = useState(props.comments.length)
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const toggleModal = () => {
@@ -135,7 +136,7 @@ const Post = (props) => {
                     <h5 
                         className='post--commentCount'
                     >
-                        {props.commentCount}
+                        {commentCount}
                     </h5>
                 </div>                
             </div>

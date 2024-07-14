@@ -32,7 +32,6 @@ const LoginForm = () => {
         catch (error) {
             console.log(error)
             setErrorText(error.response.data.message)
-           
         }
     }
     

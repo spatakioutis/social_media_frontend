@@ -29,6 +29,10 @@
     display: none;
 }
 
+.no--comments--card {
+    padding: 40px 0;
+}
+
 @media (max-width: 600px) {
     .comment--modal {
         width: 100px;

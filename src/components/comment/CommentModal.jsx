@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import CommentForm from "./CommentForm"
 import CommentCard from "./CommentCard"
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io"
 import "../../styles/comments/CommentModal.css"
-import { useAxios } from "../../hooks/AxiosInterceptor";
+import { useAxios } from "../../hooks/AxiosInterceptor"
 
 const CommentModal = (props) => {
 
@@ -14,7 +14,6 @@ const CommentModal = (props) => {
 
     useEffect(() => {
         const fetchComments = async () => {
-            console.log("triggered")
             setLoading(true)
             try {
                 const response = await axiosInstance.get(`http://localhost:5000/comments?postID=${props.postID}`)
@@ -28,19 +27,30 @@ const CommentModal = (props) => {
         fetchComments()
     }, [commentAdded])
 
-    const handleCommentSubmit = () => {
-        setCommentAdded(prev => !prev)
+    const handleCommentDelete = (commentID) => {
+        setComments((prevComments) => 
+            prevComments.filter(comment => comment._id !== commentID)
+        )
     }
     
     const commentsCards = comments.map((comment, index) => {
-        return <CommentCard comment={comment} key={index + 1} />
-    });
+        return <CommentCard 
+                    comment={comment} 
+                    key={index + 1} 
+                    deleteComment={handleCommentDelete}
+                />
+    })
 
     return (
         <div className="modalbg">
             <div className="comment--modal">
                 <div className="comment--cards">
-                    {commentsCards}
+                    { commentsCards.length > 0 ? 
+                    commentsCards :
+                    <div className="no--comments--card">
+                        No comments yet. Be the first!
+                    </div>
+                    }
                     {loading && <p>Loading...</p>}
                 </div>
                 <CommentForm 
@@ -54,7 +64,7 @@ const CommentModal = (props) => {
             />
         </div>
 
-    );
+    )
 }
 
 export default CommentModal

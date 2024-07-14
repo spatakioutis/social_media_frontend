@@ -50,7 +50,7 @@ const UserProfilePage = () => {
                                 userProfPic={profile.userInfo.profilePic}
                                 image={post.image}
                                 likes={post.likes}
-                                commentCount={0}
+                                comments={post.comments}
                                 deletePost={handlePostDelete}
                             />
                         ))}
