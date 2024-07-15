@@ -88,11 +88,13 @@ const CommentCard = (props) => {
                     
             </div> 
             <p className="comment--text">{props.comment.text}</p>
-            <DeleteForeverIcon 
-                    className="delete--comment--icon"
-                    sx={{fontSize: '1.2rem'}}
-                    onClick={handleCommentDelete}
-            /> 
+            {auth.user.username === props.comment.username &&
+                <DeleteForeverIcon 
+                        className="delete--comment--icon"
+                        sx={{fontSize: '1.2rem'}}
+                        onClick={handleCommentDelete}
+                /> 
+            }
             
         </div>
     )

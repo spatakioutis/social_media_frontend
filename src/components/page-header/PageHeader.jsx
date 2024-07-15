@@ -1,6 +1,5 @@
 import { FaHome } from "react-icons/fa"
 import { useState } from "react"
-
 import DropdownMenu from "./DropdownMenu.jsx"
 import SearchBar from "./SearchBar.jsx"
 import { useNavigate } from "react-router-dom"
@@ -11,7 +10,7 @@ const PageHeader = () => {
 
     const auth = useAuth()
     const navigate = useNavigate()
-    const [dropdownActive, setDropdownActive] = useState(false)
+    const [dropdownMenuActive, setDropdownMenuActive] = useState(false)
 
     return (
         <>  
@@ -31,14 +30,16 @@ const PageHeader = () => {
                         src={auth.user && auth.user.profilePic} 
                         alt="avatar" 
                         className="logged--user--button"
-                        onClick={() => {setDropdownActive(prevState => !prevState)}}
+                        onClick={() => {setDropdownMenuActive(prevState => !prevState)}}
                     />
                 </div>
             </div>
-            {dropdownActive && <DropdownMenu 
-                                        logOut={auth.logOut}
-                                        user={auth.user.username}
-                                />}
+            {dropdownMenuActive && 
+                <DropdownMenu 
+                    logOut={auth.logOut}
+                    user={auth.user.username}
+                />
+            }
         </>
     )
 }

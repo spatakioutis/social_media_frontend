@@ -1,0 +1,64 @@
+.dropdown--search {
+    width: 37%;
+    min-width: 300px;
+}
+
+.dropdown--search img {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.dropdown--item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.dropdown--item:hover {
+    background-color: #3b3b3b;
+}
+
+.dropdown--item--icon {
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown--item--text span {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    text-align: left;
+    text-indent: 4px;
+}
+
+.dropdown-item-text {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    flex: 1;
+}
+
+.dropdown--search .MuiPaper-root {
+    width: 100%;
+}
+
+.dropdown--search .MuiMenuList-root {
+    padding: 0;
+}
+
+.dropdown--search .MuiMenuItem-root {
+    padding: 10px 20px;
+}
+
+.dropdown--search .MuiListItemIcon-root {
+    min-width: 40px;
+}
+
+.dropdown--search .MuiListItemText-root {
+    margin: 0;
+}

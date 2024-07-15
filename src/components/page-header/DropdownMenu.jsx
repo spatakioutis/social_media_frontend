@@ -23,7 +23,7 @@ const DropdownMenu = (props) => {
                 backgroundColor: '#303030',
                 color: 'white' }}>
                 <MenuList>
-                    <MenuItem onClick={() => navigate('/user', {state: {username: props.user}} ) }>
+                    <MenuItem onClick={() => navigate(`/user?username=${props.user}`)}>
                             <ListItemIcon>
                                 <AccountCircleIcon  
                                             fontSize="small" 

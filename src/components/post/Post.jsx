@@ -23,8 +23,8 @@ const Post = (props) => {
         setModalIsOpen((prev) => !prev)
     }
 
-    const goToProfile = () => {
-        navigate('/user', {state: {username: props.username}})
+    const goToProfile = (username) => {
+        navigate(`/user?username=${username}`)
     }
 
     const handlePostDelete = async () => {
@@ -77,11 +77,11 @@ const Post = (props) => {
                         className="post--profil--picture" 
                         src={props.userProfPic} 
                         alt="user picture"
-                        onClick={goToProfile}                    
+                        onClick={() => goToProfile(props.username)}                    
                     />
                     <h3 
                         className="post--username"
-                        onClick={goToProfile}                                    
+                        onClick={() => goToProfile(props.username)}                                    
                     >
                         {props.username}
                     </h3>
