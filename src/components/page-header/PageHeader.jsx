@@ -19,6 +19,7 @@ const PageHeader = () => {
                     src="https://storage.googleapis.com/spatakioutis_app_img/header-logo.png" 
                     alt="logo" 
                     className="header--logo"
+                    onClick={() => {navigate('/home')}}
                 />
                 <SearchBar />
                 <div className="header--options">

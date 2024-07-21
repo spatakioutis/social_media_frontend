@@ -6,7 +6,9 @@ import LoginPage from "./pages/LoginPage.jsx"
 import RegisterPage from "./pages/RegisterPage.jsx"
 import UserProfilePage from "./pages/UserProfilePage.jsx"
 import SettingsPage from "./pages/SettingsPage.jsx"
+import HashtagPage from "./pages/HashtagPage.jsx"
 import './styles/App.css'
+
 
 const App = () => {
 	return (
@@ -40,6 +42,10 @@ const App = () => {
 							<Route 
 								path="/settings" 
 								element={<SettingsPage />} 
+							/>
+							<Route 
+								path="/hashtag" 
+								element={<HashtagPage />} 
 							/>
             			</Route>
          			 </Routes>

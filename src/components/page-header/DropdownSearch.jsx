@@ -4,6 +4,7 @@ import MenuList from '@mui/material/MenuList'
 import MenuItem from '@mui/material/MenuItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
+import TagIcon from '@mui/icons-material/Tag';
 import { useNavigate } from 'react-router-dom'
 import '../../styles/header/DropdownSearch.css'
 
@@ -11,31 +12,57 @@ const DropdownSearch = (props) => {
 
     const navigate = useNavigate()
 
-    const handleClick = (user) => {
+    const handleClick = (query) => {
         props.setDropdownActive(false)
-        navigate(`/user?username=${user.username}`)
+        query.user ? navigate(`/user?username=${query.user.username}`) : navigate(`/hashtag?tag=${query.hashtag}`)
     }
 
-    const dropdownItems = props.users.map(user => {
-        return (
-            <MenuItem 
-                onClick={() => handleClick(user)} 
-                key={user.userID}
-                className="dropdown--item"
-            >
-                <ListItemIcon className="dropdown--item--icon">
-                    <img 
-                        src={user.profilePic}
-                    />
-                </ListItemIcon>
-                <ListItemText 
-                    className="dropdown--item--text"
+    let dropdownItems = []
+
+    if (props.users.length > 0) {
+        dropdownItems = props.users.map(user => {
+            return (
+                <MenuItem 
+                    onClick={() => handleClick({user})} 
+                    key={user.userID}
+                    className="dropdown--item"
                 >
-                    {user.username}
-                </ListItemText>
-            </MenuItem>
-        )
-    })
+                    <ListItemIcon className="dropdown--item--icon">
+                        <img 
+                            src={user.profilePic}
+                        />
+                    </ListItemIcon>
+                    <ListItemText 
+                        className="dropdown--item--text"
+                    >
+                        {user.username}
+                    </ListItemText>
+                </MenuItem>
+            )
+        })
+    }
+    else {
+        dropdownItems = props.hashtags.map(hashtag => {
+            return (
+                <MenuItem 
+                    onClick={() => handleClick({hashtag: hashtag.tag})} 
+                    key={hashtag.hashtagID}
+                    className="dropdown--item"
+                >
+                    <ListItemIcon className="dropdown--item--icon">
+                        <TagIcon
+                            sx={{color: 'white'}} 
+                        />
+                    </ListItemIcon>
+                    <ListItemText 
+                        className="dropdown--item--text"
+                    >
+                        {hashtag.tag}
+                    </ListItemText>
+                </MenuItem>
+            )
+        })
+    }
 
     return (
         <> {

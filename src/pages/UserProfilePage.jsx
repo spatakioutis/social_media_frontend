@@ -5,6 +5,7 @@ import PageHeader from '../components/page-header/PageHeader.jsx'
 import UserProfileHeader from '../components/user-profile/UserProfileHeader.jsx'
 import { useAxios } from '../hooks/AxiosInterceptor.jsx'
 import '../styles/pages/UserProfilePage.css'
+
 const UserProfilePage = () => {
 
     const [profile, setProfile] = useState(null)

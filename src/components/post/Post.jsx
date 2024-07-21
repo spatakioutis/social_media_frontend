@@ -3,11 +3,23 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import { FaRegComment } from "react-icons/fa"
 import {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
-
 import {useAxios} from '../../hooks/AxiosInterceptor.jsx'
 import {useAuth} from '../../hooks/AuthProvider.jsx'
 import CommentModal from "../comment/CommentModal.jsx"
+import HashtagText from "../hashtags/HashtaggedText.jsx"
 import '../../styles/post/Post.css'
+
+const extractHashtags = (text) => {
+    const regex = /#(\w+)/g
+    let matches
+    const hashtags = []
+
+    while ((matches = regex.exec(text)) !== null) {
+        hashtags.push(matches[1].toLowerCase())
+    }
+
+    return hashtags
+}
 
 const Post = (props) => {
     const navigate = useNavigate()
@@ -107,7 +119,10 @@ const Post = (props) => {
             }
             <div className="post--caption">
                 <p className="caption--username">{props.username}</p>
-                <p className="caption--text">{props.caption}</p>
+                <HashtagText 
+                    className="caption--text"
+                    text={props.caption}
+                />
             </div>
             <div className="post--options">
                 <div className='post--likes'>

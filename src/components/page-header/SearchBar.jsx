@@ -9,6 +9,7 @@ const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const axiosInstance = useAxios()
     const [usersFound, setUsersFound] = useState([])
+    const [hashtagsFound, setHashtagsFound] = useState([])
     const [dropdownSearchActive, setDropdownSearchActive] = useState(false)
 
     const fetchUsers = async (query) => {
@@ -28,18 +29,47 @@ const SearchBar = () => {
         }
     }
 
+    const fetchHashtags = async (query) => {
+        if (!query) {
+            setHashtagsFound([])
+            setDropdownSearchActive(false)
+            return
+        }
+        try {
+            const result = await axiosInstance.get(`http://localhost:5000/hashtags/search?searchQuery=${query}`)
+            setHashtagsFound(result.data.hashtags)
+            setDropdownSearchActive(true)
+        } catch (error) {
+            console.log(error.message)
+            setHashtagsFound([])
+            setDropdownSearchActive(false)
+        }
+    }
+
     const debouncedFetchUsers = useCallback(debounce((query) => {
         fetchUsers(query)
     }, 600), [])
 
+    const debouncedFetchHashtags = useCallback(debounce((query) => {
+        fetchHashtags(query)
+    }, 600), [])
+
     const handleChange = async (e) => {
         setSearchQuery(e.target.value)
-        debouncedFetchUsers(searchQuery)
+
+        if (searchQuery.startsWith('#'))
+            debouncedFetchHashtags(searchQuery)
+        else
+            debouncedFetchUsers(searchQuery)
     }
 
     useEffect(() => {
         return () => debouncedFetchUsers.cancel();
     }, [debouncedFetchUsers])
+
+    useEffect(() => {
+        return () => debouncedFetchHashtags.cancel();
+    }, [debouncedFetchHashtags])
 
     return (
         <div className="search--bar">
@@ -57,6 +87,7 @@ const SearchBar = () => {
             
             {dropdownSearchActive && 
                 <DropdownSearch 
+                    hashtags={hashtagsFound}
                     users={usersFound}
                     setDropdownActive={setDropdownSearchActive}
                 />
