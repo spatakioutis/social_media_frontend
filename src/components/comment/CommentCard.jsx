@@ -14,8 +14,8 @@ const CommentCard = (props) => {
     const [isLiked, setIsLiked] = useState(false)
     const [likeCount, setLikeCount] = useState(props.comment.likes.length)
 
-    const goToProfile = () => {
-        navigate('/user', {state: {username: props.comment.username}})
+    const goToProfile = (username) => {
+        navigate(`/user?username=${username}`)
     }
 
     const handleCommentDelete = async () => {
@@ -62,7 +62,7 @@ const CommentCard = (props) => {
 
     return (
         <div className="comment--card">            
-            <div className="comment--header" onClick={goToProfile}>
+            <div className="comment--header" onClick={() => goToProfile(props.comment.username)}>
                 <img 
                     className="comment--profil--picture" 
                     src={props.comment.profilePic} 
