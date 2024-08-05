@@ -21,6 +21,7 @@ const SearchBar = () => {
         try {
             const result = await axiosInstance.get(`http://localhost:5000/profile/search?searchQuery=${query}`)
             setUsersFound(result.data.users)
+            setHashtagsFound([])
             setDropdownSearchActive(true)
         } catch (error) {
             console.log(error.message)
@@ -36,8 +37,10 @@ const SearchBar = () => {
             return
         }
         try {
+            query = query.slice(1)
             const result = await axiosInstance.get(`http://localhost:5000/hashtags/search?searchQuery=${query}`)
             setHashtagsFound(result.data.hashtags)
+            setUsersFound([])
             setDropdownSearchActive(true)
         } catch (error) {
             console.log(error.message)
@@ -46,30 +49,29 @@ const SearchBar = () => {
         }
     }
 
-    const debouncedFetchUsers = useCallback(debounce((query) => {
-        fetchUsers(query)
-    }, 600), [])
+    useEffect(() => {
+        if (searchQuery.trim()) {
+            const timer = setTimeout(() => {
+                if (searchQuery.startsWith('#'))
+                    fetchHashtags(searchQuery)
+                else
+                    fetchUsers(searchQuery)
+            }, 1000)
 
-    const debouncedFetchHashtags = useCallback(debounce((query) => {
-        fetchHashtags(query)
-    }, 600), [])
+            return () => clearTimeout(timer)
+        }
+        else {
+            setUsersFound([])
+            setHashtagsFound([])
+            setDropdownSearchActive(false)
+        }
+    }, [searchQuery])
 
     const handleChange = async (e) => {
+        console.log(searchQuery)
         setSearchQuery(e.target.value)
 
-        if (searchQuery.startsWith('#'))
-            debouncedFetchHashtags(searchQuery)
-        else
-            debouncedFetchUsers(searchQuery)
     }
-
-    useEffect(() => {
-        return () => debouncedFetchUsers.cancel();
-    }, [debouncedFetchUsers])
-
-    useEffect(() => {
-        return () => debouncedFetchHashtags.cancel();
-    }, [debouncedFetchHashtags])
 
     return (
         <div className="search--bar">
