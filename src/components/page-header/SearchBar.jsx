@@ -68,7 +68,6 @@ const SearchBar = () => {
     }, [searchQuery])
 
     const handleChange = async (e) => {
-        console.log(searchQuery)
         setSearchQuery(e.target.value)
 
     }
