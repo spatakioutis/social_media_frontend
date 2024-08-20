@@ -3,8 +3,9 @@ import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 
 import { useAxios } from "../../hooks/AxiosInterceptor"
-
+import { useAuth } from '../../hooks/AuthProvider'
 import '../../styles/settings/ChangePassword.css'
+
 const validationSchema = yup.object({
     oldPassword:    yup.string().required('This field is required'),
     newPassword:    yup.string().required('This field is required')
@@ -18,6 +19,7 @@ const validationSchema = yup.object({
 })
 
 const ChangePassword = ({closeModal}) => {
+    const auth = useAuth()
     const axiosInstance = useAxios()
 
     const {register, handleSubmit, formState: {errors}} = useForm({
@@ -31,6 +33,7 @@ const ChangePassword = ({closeModal}) => {
                 newPassword:    data.newPassword
             })
             closeModal()
+            auth.logOut()
         }
         catch(error) {
             console.log(error)
